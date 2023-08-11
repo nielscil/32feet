@@ -63,6 +63,9 @@ namespace InTheHand.Net.Bluetooth.Win32
         [DllImport(bthpropsDll, ExactSpelling = true, SetLastError = true, CharSet = CharSet.Unicode)]
         internal static extern int BluetoothAuthenticateDeviceEx(IntPtr hwndParentIn, IntPtr hRadioIn, ref BLUETOOTH_DEVICE_INFO pbtdiInout, byte[] pbtOobData, BluetoothAuthenticationRequirements authenticationRequirement);
 
+        [DllImport(bthpropsDll, ExactSpelling = true, SetLastError = true, CharSet = CharSet.Unicode)]
+        internal static extern int BluetoothAuthenticateDevice(IntPtr hwndParent, IntPtr hRadio, ref BLUETOOTH_DEVICE_INFO pbtdi, string pszPasskey, int ulPasskeyLength);
+
         [DllImport(bthpropsDll, ExactSpelling = true, SetLastError = true)]
         internal static extern int BluetoothRemoveDevice(ref ulong pAddress);
 

@@ -48,7 +48,8 @@ namespace InTheHand.Net.Bluetooth
                 mitmProtection = BluetoothAuthenticationRequirements.MITMProtectionNotRequiredBonding;
             }
 
-            bool success = NativeMethods.BluetoothAuthenticateDeviceEx(IntPtr.Zero, IntPtr.Zero, ref info, null, mitmProtection) == 0;
+            bool success = NativeMethods.BluetoothAuthenticateDeviceEx(IntPtr.Zero, IntPtr.Zero, ref info, null, mitmProtection) == 0
+                || NativeMethods.BluetoothAuthenticateDevice(IntPtr.Zero, IntPtr.Zero, ref info, pin, pin.Length) == 0;
 
             if (!success)
             {
